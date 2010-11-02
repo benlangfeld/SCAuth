@@ -592,6 +592,8 @@ SCLoginFailed = 1;
             {
                 if (statusCode === 409)
                     [self _setDialogModeToLogin];
+	            else if (statusCode === 422)
+	                [self _registrationFailedWithError:@"Validation error" statusCode:statusCode];
                 else
                     [self _registrationFailedWithError:GenericErrorMessage statusCode:statusCode];
             }
