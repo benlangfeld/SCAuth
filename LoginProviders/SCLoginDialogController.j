@@ -208,7 +208,7 @@ SCLoginFailed = 1;
 - (void)_loginUser:(CPString)username password:(CPString)password
 {
     var shouldRemember  = ([_rememberMeButton state] === CPOnState),
-        loginObject     = {'username' : username, 'password' : password, 'remember' : shouldRemember},
+        loginObject     = {'user' : {'username' : username, 'password' : password, 'remember' : shouldRemember}},
         request         = [CPURLRequest requestWithURL:[[CPBundle mainBundle] objectForInfoDictionaryKey:@"SCAuthLoginURL"] || @"/session/"];
 
     [request setHTTPMethod:@"POST"];
@@ -222,7 +222,7 @@ SCLoginFailed = 1;
 - (void)_registerUser:(CPString)username password:(CPString)password
 {
     var shouldRemember  = ([_rememberMeButton state] === CPOnState),
-        registerObject  = {'username' : username, 'password' : password, 'remember' : shouldRemember},
+        registerObject  = {'user' : {'username' : username, 'password' : password, 'remember' : shouldRemember}},
         request         = [CPURLRequest requestWithURL:[[CPBundle mainBundle] objectForInfoDictionaryKey:@"SCAuthRegistrationURL"] || @"/user/"];
 
     [request setHTTPMethod:@"POST"];
